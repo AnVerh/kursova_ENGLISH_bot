@@ -100,7 +100,7 @@ namespace HoroscopeBot
 
                                 +"\nCancer      22 june — 22 july"
 
-                                +"\n     23 july — 22 august"
+                                +"\nLeo     23 july — 22 august"
 
                                 +"\nVirgo   23 august — 23 september"
 

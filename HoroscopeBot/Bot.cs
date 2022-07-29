@@ -144,7 +144,7 @@ namespace HoroscopeBot
             if (message.Text == "Day description")
             {
                 HoroType = "Day description";
-                await botClient.SendTextMessageAsync(message.Chat.Id, "Please write your western horoscope sign and a day");
+                await botClient.SendTextMessageAsync(message.Chat.Id, "Please write your western horoscope sign and a day \nExample : pisces, tomorrow");
                 return;
             }
             if(message.Text=="Chinese horoscope")
@@ -162,7 +162,7 @@ namespace HoroscopeBot
                     AClient aclient = new AClient();
                     string[] needenparms = message.Text.Split(", ");
                     string sign = needenparms[0];
-                    string period = needenparms[1];
+                    string period = needenparms[1].ToLower();
                     Sign = sign.ToLower();
                     if (CheckPeriod(period) == true && CheckWSign(Sign) == true)
                     {
@@ -225,9 +225,9 @@ namespace HoroscopeBot
                 {
                     Aztro_Client aztroclient = new Aztro_Client();
                     string[] neededparms = message.Text.Split(", ");
-                    string Sign = neededparms[0];
-                    period = neededparms[1];
-                    
+                    string sign = neededparms[0];
+                    period = neededparms[1].ToLower();
+                    Sign = sign.ToLower();
                     if ( CheckDay(period)==true && CheckWSign(Sign) == true)
                     {
                         
@@ -256,7 +256,7 @@ namespace HoroscopeBot
                     CClient cclient = new CClient();
                     string[] neededparms = message.Text.Split(", ");
                     string sign = neededparms[0];
-                    period = neededparms[1];
+                    period = neededparms[1].ToLower();
                     Sign = sign.ToLower();
                     if (CheckPeriod(period) == true && CheckCSign(Sign) == true)
                     {

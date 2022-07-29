@@ -16,7 +16,7 @@ namespace HoroscopeBot.Aztro
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"https://localhost:44300/Aztro?sign={sign}&day={day}"),
+                RequestUri = new Uri($"https://kursova-api.herokuapp.com/Aztro?sign={sign}&day={day}"),
             };
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();

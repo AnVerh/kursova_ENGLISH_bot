@@ -138,7 +138,7 @@ namespace HoroscopeBot
             if (message.Text == "Western horoscope")
             {
                 HoroType = "Western horoscope";
-                await botClient.SendTextMessageAsync(message.Chat.Id, $"Please write your western horoscope sign and a period of time \n Example: Aries, month ") ;
+                await botClient.SendTextMessageAsync(message.Chat.Id, "Please write your western horoscope sign and a period of time \nExample: aries, month ") ;
                 return;
             }
             if (message.Text == "Day description")
@@ -150,7 +150,7 @@ namespace HoroscopeBot
             if(message.Text=="Chinese horoscope")
             {
                 HoroType = "Chinese horoscope";
-                await botClient.SendTextMessageAsync(message.Chat.Id, "Please write your chinese horoscope sign and a period of time \n Example: Rat, week");
+                await botClient.SendTextMessageAsync(message.Chat.Id, "Please write your chinese horoscope sign and a period of time \nExample: rat, week");
                 return;
             }
 
@@ -161,8 +161,9 @@ namespace HoroscopeBot
                     string result = "";
                     AClient aclient = new AClient();
                     string[] needenparms = message.Text.Split(", ");
-                    string Sign = needenparms[0];
+                    string sign = needenparms[0];
                     string period = needenparms[1];
+                    Sign = sign.ToLower();
                     if (CheckPeriod(period) == true && CheckWSign(Sign) == true)
                     {
                         switch (Sign)
@@ -254,8 +255,9 @@ namespace HoroscopeBot
                     string result = "";
                     CClient cclient = new CClient();
                     string[] neededparms = message.Text.Split(", ");
-                    Sign = neededparms[0];
+                    string sign = neededparms[0];
                     period = neededparms[1];
+                    Sign = sign.ToLower();
                     if (CheckPeriod(period) == true && CheckCSign(Sign) == true)
                     {
                         switch (Sign)

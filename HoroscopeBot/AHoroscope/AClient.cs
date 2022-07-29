@@ -26,7 +26,7 @@ namespace HoroscopeBot.AHoroscope
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Get,
-                    RequestUri = new Uri($"https://localhost:44300/MonthlyW?sign={sign}"),
+                    RequestUri = new Uri($"https://kursova-api.herokuapp.com/MonthlyW?sign={sign}"),
                 };
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
@@ -38,19 +38,19 @@ namespace HoroscopeBot.AHoroscope
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Get,
-                    RequestUri = new Uri($"https://localhost:44300/WeeklyW?sign={sign}"),
+                    RequestUri = new Uri($"https://kursova-api.herokuapp.com/WeeklyW?sign={sign}"),
                 };
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<AModel>(result);
             }
-            else if (period == "today"||period=="yesterday"||period=="tomorroq")
+            else if (period == "today"||period=="yesterday"||period=="tomorrow")
             {
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Get,
-                    RequestUri = new Uri($"https://localhost:44300/DailyW?sign={sign}&day={period}"),
+                    RequestUri = new Uri($"https://kursova-api.herokuapp.com/DailyW?sign={sign}&day={period}"),
                 };
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
